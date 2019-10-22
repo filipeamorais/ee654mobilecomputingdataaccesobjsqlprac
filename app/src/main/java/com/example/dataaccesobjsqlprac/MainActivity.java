@@ -12,7 +12,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     FriendsDAO friendsDAO;
     TextView textV;
-    EditText first, last, email;
+    EditText first, last, email, id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
         String em = email.getText().toString();
         Friend f = new Friend(0, fn, ln, em);
         friendsDAO.addFriend(f);
+    }
+
+    public void updateRecord (View v) {
+        int idf = Integer.parseInt(id.getText().toString());
+        String fn = first.getText().toString();
+        String ln = last.getText().toString();
+        String em = email.getText().toString();
+        Friend f = new Friend(idf, fn, ln, em);
+        friendsDAO.updateContact(f);
     }
 
     public void deleteRecords(View v) {
